@@ -1,0 +1,227 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+body {
+  background: black;
+}
+.wrap {
+  position: absolute;
+  box-sizing: border-box;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.wrap .showContent {
+  width: 30%;
+  height: 30%;
+  left: 50%;
+  top: 0;
+  position: absolute;
+  transform: rotate(20deg);
+  color: white;
+  text-align: center;
+  opacity: 0;
+  transition: top 1000ms, opacity 1000ms;
+}
+.wrap .showContent.active {
+  opacity: 1;
+  top: -10%;
+}
+.wrap .showContent .content_main {
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+  text-align: center;
+  pointer-events: none;
+  font-size: 0.85em;
+}
+.wrap .showContent .content_main .contentValue {
+  position: absolute;
+  top: 30%;
+  left: 35%;
+}
+.wrap .showContent .content_main .contentValue small {
+  font-size: 0.8em;
+}
+.wrap .showContent .content_main .contentName {
+  position: absolute;
+  bottom: 30%;
+  left: 35%;
+}
+.wrap .showContent .content_main .valueBg {
+  width: 90%;
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+  transform: rotate(180deg);
+}
+.wrap .x {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  position: relative;
+  border: 1px #0df7fa solid;
+  transform-style: preserve-3d;
+  transform: rotateX(55deg) rotateY(15deg) rotateZ(0deg);
+  animation: mymove linear infinite 12000ms;
+}
+.wrap .x .xDom {
+  border: 1px #0df7fa solid;
+  position: absolute;
+}
+.wrap .x .yInner {
+  height: 100%;
+  left: 50%;
+  transform-style: preserve-3d;
+  transform: rotateX(90deg);
+}
+.wrap .x .yInner .circleY {
+  border-top: 1px #0df7fa solid;
+  border-left: 1px #0df7fa solid;
+  transform: rotateX(90deg);
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.wrap .x .circle {
+  border: 1px #0df7fa solid;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  background-size: 100% 100%;
+  transform-style: preserve-3d;
+}
+.wrap .x .circle .topCircle {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-style: preserve-3d;
+  transform: translate3d(-50%, -50%, 0px);
+  background: url(images/circleBg1.png);
+  background-size: 100% 100%;
+  opacity: 0;
+  transition: transform 400ms ease-out, opacity 200ms ease-out;
+}
+.wrap .x .circle .topCircle.active {
+  opacity: 1;
+  transform: translate3d(-50%, -50%, 15px);
+  animation: showMain ease-out 400ms;
+}
+.wrap .x .circle .topCircle.active .out-topCircle {
+  transform: translate3d(-50%, -50%, 25px);
+  animation: showCircle ease-out 800ms;
+}
+.wrap .x .circle .topCircle.active .in-topCircle {
+  transform: translate3d(-50%, -50%, 50px);
+  animation: showCircle2 ease-out 1200ms;
+}
+.wrap .x .circle .topCircle .out-topCircle,
+.wrap .x .circle .topCircle .in-topCircle {
+  width: 110%;
+  height: 110%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0px);
+  background: url(images/circleBg2.png);
+  background-size: 100% 100%;
+  transition: transform 200ms;
+}
+.wrap .x .circle .topCircle .in-topCircle {
+  transform: translate3d(-50%, -50%, 0px);
+  background: url(images/circleBg3.png);
+  background-size: 100% 100%;
+}
+.wrap .x .outCircle {
+  width: 150%;
+  height: 150%;
+  left: -25%;
+  top: -25%;
+  border-radius: 50%;
+  border: none;
+}
+.wrap .x .outCircle .msgBox {
+  width: 10em;
+  height: 10em;
+  font-size: 0.85em;
+  position: absolute;
+  cursor: pointer;
+  color: white;
+}
+.wrap .x .outCircle .msgBox .content {
+  width: 100%;
+  height: 100%;
+}
+.wrap .x .outCircle .msgBox .content .content_main {
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+  animation: msgMove linear infinite 12000ms;
+  text-align: center;
+  pointer-events: none;
+}
+.wrap .x .outCircle .msgBox .content .content_main .contentValue {
+  position: absolute;
+  top: 30%;
+  left: 35%;
+}
+.wrap .x .outCircle .msgBox .content .content_main .contentValue small {
+  font-size: 0.8em;
+}
+.wrap .x .outCircle .msgBox .content .content_main .contentName {
+  position: absolute;
+  bottom: 30%;
+  left: 35%;
+}
+.wrap .x .outCircle .msgBox .content .content_main .valueBg {
+  width: 90%;
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+  transform: rotate(180deg);
+}
+@keyframes mymove {
+  100% {
+    transform: rotateX(55deg) rotateY(15deg) rotateZ(360deg);
+  }
+}
+@keyframes msgMove {
+  100% {
+    transform: rotateZ(-360deg);
+  }
+}
+@keyframes showMain {
+  0% {
+    width: 50%;
+    height: 50%;
+    transform: translate3d(-50%, -50%, 0px);
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    transform: translate3d(-50%, -50%, 15px);
+  }
+}
+@keyframes showCircle {
+  0% {
+    transform: translate3d(-50%, -50%, 0px);
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 25px);
+  }
+}
+@keyframes showCircle2 {
+  0% {
+    transform: translate3d(-50%, -50%, 0px);
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 50px);
+  }
+}
